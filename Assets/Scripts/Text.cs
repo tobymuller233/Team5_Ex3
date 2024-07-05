@@ -19,7 +19,7 @@ public class Text : MonoBehaviour
     {
         theText = GetComponent<TextMeshProUGUI>();
         // theText.text = "HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")   ENEMY:Count(10) Destroyed(" + destroyed.ToString() + ")"; 
-        theText.text = "WAYPOINTS:(" + waypoint_mode + ") HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")";
+        theText.text = "WAYPOINTS:(" + waypoint_mode + ") HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")" + ")   ENEMY:Count(10) Destroyed(" + destroyed.ToString() + ")";
     }
 
     // Update is called once per frame
@@ -27,6 +27,6 @@ public class Text : MonoBehaviour
     {
         theText = GetComponent<TextMeshProUGUI>();
         // theText.text = "HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")   ENEMY:Count(10) Destroyed(" + destroyed.ToString() + ")"; 
-        theText.text = "WAYPOINTS:(" + waypoint_mode + ") HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")";
+        theText.text = "WAYPOINTS:(" + waypoint_mode + ") HERO: Drive(" + mode + ") TouchedEnemy(" + touched.ToString() + ")  EGG: OnScreen(" + EggCount.ToString() + ")" + ")   ENEMY:Count(10) Destroyed(" + destroyed.ToString() + ")";
     }
 }
