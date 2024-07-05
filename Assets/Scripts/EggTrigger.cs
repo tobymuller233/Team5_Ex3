@@ -46,6 +46,12 @@ public class EggTrigger : MonoBehaviour
 
 private void OnTriggerEnter2D(Collider2D collision){
     if(collision.gameObject.tag == "Letter"){
+        if(GetComponent<Eggs>().touched){
+            return;
+        }
+        Text.EggCount--;
+        GetComponent<Eggs>().touched = true;
+        Destroy(gameObject);
         SpriteRenderer letterRenderer = collision.gameObject.GetComponent<SpriteRenderer>();
         if (letterRenderer != null) {
             Color c = letterRenderer.color;
@@ -54,6 +60,7 @@ private void OnTriggerEnter2D(Collider2D collision){
             if(c.a <= 0.01f)
             ChangePosition(collision.gameObject);
         }
+
     }
 }
 
