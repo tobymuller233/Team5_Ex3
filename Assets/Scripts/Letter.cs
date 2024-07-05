@@ -9,7 +9,7 @@ public class Letter : MonoBehaviour
     private GameObject LetterParent;
     public List<Transform> LetterArray;       //遍历的结果数组
 
-    private bool LetterMode = true; //字母是否显示 
+    public static bool LetterMode = true; //字母是否显示 
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +100,6 @@ public class Letter : MonoBehaviour
                 // 获取子物体并启用它们
                 GameObject child = transform.GetChild(i).gameObject;
                 child.GetComponent<SpriteRenderer>().enabled = true;
-                Debug.Log("禁用物体"+ i);
             }
         }
         else{
@@ -110,7 +109,6 @@ public class Letter : MonoBehaviour
                 // 获取子物体并禁用它们
                 GameObject child = transform.GetChild(i).gameObject;
                 child.GetComponent<SpriteRenderer>().enabled = false;
-                Debug.Log("禁用物体"+ i);
             }
         }
     }
