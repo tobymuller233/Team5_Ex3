@@ -7,6 +7,7 @@ public class Eggs : MonoBehaviour
     private float ScreenWidth = 200f * Screen.width / Screen.height;
     // Start is called before the first frame update
     private const float mEggSpeed = 40f / 1f;        // speed of the egg
+    public bool touched = false;
     void Start()
     {
         
@@ -25,11 +26,14 @@ public class Eggs : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Plane"){
-            Debug.Log("Egg: OnTriggerEnter2D");
-            Text.EggCount--;
-            Destroy(gameObject);
-        }
+        // if(collision.gameObject.tag == "Plane"){
+        //     // Debug.Log("Egg: OnTriggerEnter2D");
+        //     if(!touched){
+        //         Text.EggCount--;
+        //         touched = true;
+        //         Destroy(gameObject);
+        //     }
+        // }
     }
 
     private void OnTriggerStay2D(Collider2D collision){
