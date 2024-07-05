@@ -8,8 +8,10 @@ public class Planes : MonoBehaviour
     private float initcolor = 0.0f;
     private bool deleted = false;
 
-    private GameObject theTargetWayPoint = null;
-    private Vector3 theTargetPos = new Vector3(0f, 0f, 0f);
+    public GameObject theTargetWayPoint = null;
+    public Vector3 theTargetPos = new Vector3(0f, 0f, 0f);
+
+    public float distance;
 
     private const float mPlaneSpeed = 20.0f / 1.0f;
     private const float theRate = 0.03f / 60f;
@@ -17,8 +19,9 @@ public class Planes : MonoBehaviour
     private bool SequenceOrder = true;          // set by default to be follow sequencing order
     void Awake()
     {
-        // Vector3 p = new Vector3(Random.Range(-0.9f * GreenUp.WindowWidth / 2, 0.9f * GreenUp.WindowWidth / 2), Random.Range(-90f, 90f));
-        Vector3 p = new Vector3(0f, 0f);
+        SequenceOrder = GreenUp.SequenceOrder();
+        Vector3 p = new Vector3(Random.Range(-0.9f * GreenUp.WindowWidth / 2, 0.9f * GreenUp.WindowWidth / 2), Random.Range(-90f, 90f));
+        // Vector3 p = new Vector3(0f, 0f);
         transform.localPosition = p;
         initcolor = GetComponent<SpriteRenderer>().color.a;
         if(SequenceOrder){
@@ -26,7 +29,7 @@ public class Planes : MonoBehaviour
         }
         else{
             // find a random waypoint between A and F
-            int r = Random.Range(0, 6);
+            int r = Random.Range(0, 3);
             theTargetWayPoint = GameObject.Find("Letter" + (char)(r + 65));
         }
         theTargetPos = theTargetWayPoint.transform.localPosition;
@@ -40,11 +43,13 @@ public class Planes : MonoBehaviour
     }
     void Update()
     {
+        SequenceOrder = GreenUp.SequenceOrder();
         Vector3 p = transform.localPosition;
+        distance = Vector3.Distance(p, theTargetPos);
         if(Vector3.Distance(p, theTargetPos) < 25.0f){          // change target
             if(SequenceOrder){
                 char c = theTargetWayPoint.name[6];
-                if(c == 'B'){
+                if(c == 'C'){
                     theTargetWayPoint = GameObject.Find("LetterA");
                 }
                 else{
@@ -52,7 +57,7 @@ public class Planes : MonoBehaviour
                 }
             }
             else{
-                int r = Random.Range(0, 6);
+                int r = Random.Range(0, 3);
                 theTargetWayPoint = GameObject.Find("Letter" + (char)(r + 65));
             }
             theTargetPos = theTargetWayPoint.transform.localPosition;
@@ -61,6 +66,7 @@ public class Planes : MonoBehaviour
         PointAtPosition(theTargetPos, theRate);
         p += transform.up * (mPlaneSpeed * Time.smoothDeltaTime);
         transform.localPosition = p;
+
         
 
     }
@@ -113,6 +119,9 @@ public class Planes : MonoBehaviour
     private void PointAtPosition(Vector3 p, float rate){
         Vector3 pos = transform.localPosition;
         Vector3 v = p - pos;
+        if(Vector3.Angle(v, transform.up) > 175f){
+            transform.Rotate(transform.forward, 90f);
+        }
         transform.up = Vector3.LerpUnclamped(transform.up, v, rate);
     }
 }
