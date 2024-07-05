@@ -5,7 +5,6 @@ using UnityEngine;
 public class EggTrigger : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float initcolor;
     private bool deleted = false;
     private GameObject a;
     private GameObject b;
@@ -22,7 +21,6 @@ public class EggTrigger : MonoBehaviour
     
     void Awake()
     {
-        initcolor = GetComponent<SpriteRenderer>().color.a;
         a=GameObject.Find("LetterA");
         b=GameObject.Find("LetterB");
         c=GameObject.Find("LetterC");

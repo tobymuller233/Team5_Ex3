@@ -49,7 +49,7 @@ public class Planes : MonoBehaviour
         if(Vector3.Distance(p, theTargetPos) < 25.0f){          // change target
             if(SequenceOrder){
                 char c = theTargetWayPoint.name[6];
-                if(c == 'C'){
+                if(c == 'F'){
                     theTargetWayPoint = GameObject.Find("LetterA");
                 }
                 else{
@@ -66,9 +66,6 @@ public class Planes : MonoBehaviour
         PointAtPosition(theTargetPos, theRate);
         p += transform.up * (mPlaneSpeed * Time.smoothDeltaTime);
         transform.localPosition = p;
-
-        
-
     }
 
     private void UpdateColor(){
@@ -96,6 +93,8 @@ public class Planes : MonoBehaviour
             UpdateColor();
             
         }
+        else if(collision.gameObject.tag == "Letter")
+            return;
         else{
             Text.touched++;
             gameObject.SetActive(false);
