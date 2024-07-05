@@ -29,7 +29,7 @@ public class Planes : MonoBehaviour
         }
         else{
             // find a random waypoint between A and F
-            int r = Random.Range(0, 3);
+            int r = Random.Range(0, 6);
             theTargetWayPoint = GameObject.Find("Letter" + (char)(r + 65));
         }
         theTargetPos = theTargetWayPoint.transform.localPosition;
@@ -57,7 +57,7 @@ public class Planes : MonoBehaviour
                 }
             }
             else{
-                int r = Random.Range(0, 3);
+                int r = Random.Range(0, 6);
                 theTargetWayPoint = GameObject.Find("Letter" + (char)(r + 65));
             }
             theTargetPos = theTargetWayPoint.transform.localPosition;
