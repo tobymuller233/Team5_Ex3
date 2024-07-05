@@ -27,12 +27,12 @@ public class EggTrigger : MonoBehaviour
         d=GameObject.Find("LetterD");
         e=GameObject.Find("LetterE");
         f=GameObject.Find("LetterF");
-        aPosition=a.transform.position;
-        bPosition=b.transform.position;
-        cPosition=c.transform.position;
-        dPosition=d.transform.position;
-        ePosition=e.transform.position;
-        fPosition=f.transform.position;
+        aPosition=a.transform.localPosition;
+        bPosition=b.transform.localPosition;
+        cPosition=c.transform.localPosition;
+        dPosition=d.transform.localPosition;
+        ePosition=e.transform.localPosition;
+        fPosition=f.transform.localPosition;
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ private void OnTriggerEnter2D(Collider2D collision){
         Vector3 p=getPosition(gameObject);
         float x=Random.Range(p.x-15,p.x+15);
         float y=Random.Range(p.y-15,p.y+15);
-        gameObject.transform.position=new Vector3(x,y,0);
+        gameObject.transform.localPosition=new Vector3(x,y,0);
         SpriteRenderer letterRenderer = gameObject.GetComponent<SpriteRenderer>();
         Color currentColor = letterRenderer.color;
         Color newColor = new Color(currentColor.r, currentColor.g, currentColor.b, 1f);

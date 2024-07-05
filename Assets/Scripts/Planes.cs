@@ -43,6 +43,7 @@ public class Planes : MonoBehaviour
     }
     void Update()
     {
+        theTargetPos = theTargetWayPoint.transform.localPosition;
         SequenceOrder = GreenUp.SequenceOrder();
         Vector3 p = transform.localPosition;
         distance = Vector3.Distance(p, theTargetPos);
