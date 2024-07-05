@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plane
   - Egg
+  - Letter
   layers:
   - Default
   - TransparentFX
