@@ -35,8 +35,13 @@ public class GreenUp : MonoBehaviour
         if(Input.GetKey(KeyCode.Q))
             Application.Quit();
 
-        if(Input.GetKey(KeyCode.J))
+        if(Input.GetKeyDown(KeyCode.J)){
             mSequenceOrder = !mSequenceOrder;
+            if(mSequenceOrder)
+                Text.waypoint_mode = "Sequence";
+            else
+                Text.waypoint_mode = "Random";
+        }
 
         time += Time.smoothDeltaTime;
         if(time > 20f)          // in case overflow
