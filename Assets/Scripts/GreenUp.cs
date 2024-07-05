@@ -13,6 +13,8 @@ public class GreenUp : MonoBehaviour
 
     public static float WindowWidth = 200f * Screen.width / Screen.height;
 
+    private static bool mSequenceOrder = true;          // set by default to be follow sequencing order
+
     // 0.2s间隔
     private float time = 0.2f;
     [SerializeField]
@@ -20,8 +22,6 @@ public class GreenUp : MonoBehaviour
     void Awake(){
         for(int i = 0; i < 10; i++){
             GameObject g = Instantiate(Resources.Load("Prefabs/Plane") as GameObject);
-            Vector3 p = new Vector3(Random.Range(-0.9f * WindowWidth / 2, 0.9f * WindowWidth / 2), Random.Range(-90f, 90f));
-            g.transform.localPosition = p;
         }
     }
     void Start()
@@ -32,9 +32,12 @@ public class GreenUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Q)){
+        if(Input.GetKey(KeyCode.Q))
             Application.Quit();
-        }
+
+        if(Input.GetKey(KeyCode.J))
+            mSequenceOrder = !mSequenceOrder;
+
         time += Time.smoothDeltaTime;
         if(time > 20f)          // in case overflow
             time = 0.2f;
@@ -78,5 +81,8 @@ public class GreenUp : MonoBehaviour
         transform.localPosition = p;
     }
 
+    public static bool SequenceOrder(){
+        return mSequenceOrder;
+    }
 
 }
