@@ -20,8 +20,6 @@ public class GreenUp : MonoBehaviour
     void Awake(){
         for(int i = 0; i < 10; i++){
             GameObject g = Instantiate(Resources.Load("Prefabs/Plane") as GameObject);
-            Vector3 p = new Vector3(Random.Range(-0.9f * WindowWidth / 2, 0.9f * WindowWidth / 2), Random.Range(-90f, 90f));
-            g.transform.localPosition = p;
         }
     }
     void Start()
