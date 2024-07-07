@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class Letter : MonoBehaviour
 {
-    private GameObject LetterParent;
+    private GameObject LetterParent;  //用于存储父物体Letter
     public List<Transform> LetterArray;       //遍历的结果数组
 
     public static bool LetterMode = true; //字母是否显示 
+
+    private int arraylength = 0;  //字母数组长度
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +55,36 @@ public class Letter : MonoBehaviour
         }
         */
     }
+    private void InitLetterPosition()  //初始化字母位置
+    {
 
+        arraylength = LetterParent.GetComponentsInChildren<Transform>(true).Length - 1;
+        GameObject child = null;
+        for(int i = 0; i < arraylength; i++) //遍历获取letterA~F，并赋予初始位置
+        {
+            child = transform.GetChild(i).gameObject;
+            switch(i){
+                case 0: 
+                    child.transform.localPosition = new Vector3 (-70f, 70f, 0f);
+                    break;
+                case 1:
+                    child.transform.localPosition = new Vector3 (70f, 70f, 0f);
+                    break;
+                case 2:
+                    child.transform.localPosition = new Vector3 (-30f, 0f, 0f);
+                    break;
+                case 3:
+                    child.transform.localPosition = new Vector3 (30f, 0f, 0f);
+                    break;
+                case 4:
+                    child.transform.localPosition = new Vector3 (-70f, -70f, 0f);
+                    break;
+                default:
+                    child.transform.localPosition = new Vector3 (70f, -70f, 0f);
+                    break;
+            }
+        }
+    }
     private Vector3 RePosition(int i)
     {
         float randomX = 0.0f, randomY = 0.0f;
