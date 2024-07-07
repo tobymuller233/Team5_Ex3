@@ -19,8 +19,9 @@ public class EggTrigger : MonoBehaviour
     private Vector3 ePosition;
     private Vector3 fPosition;
     
-    void Awake()
-    {
+
+    // Update is called once per frame
+    void Start(){
         a=GameObject.Find("LetterA");
         b=GameObject.Find("LetterB");
         c=GameObject.Find("LetterC");
@@ -33,11 +34,6 @@ public class EggTrigger : MonoBehaviour
         dPosition=d.transform.localPosition;
         ePosition=e.transform.localPosition;
         fPosition=f.transform.localPosition;
-    }
-
-    // Update is called once per frame
-    void start(){
-
     }
     void Update()
     {
