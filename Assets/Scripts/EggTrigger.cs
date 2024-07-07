@@ -42,9 +42,14 @@ public class EggTrigger : MonoBehaviour
 
 private void OnTriggerEnter2D(Collider2D collision){
     if(collision.gameObject.tag == "Letter"){
+        if(!Letter.LetterMode)
+            return;
         if(GetComponent<Eggs>().touched){
             return;
         }
+        // if(collision.gameObject.GetComponent<Letter>().LetterMode == false){
+        //     return;
+        // }
         Text.EggCount--;
         GetComponent<Eggs>().touched = true;
         Destroy(gameObject);

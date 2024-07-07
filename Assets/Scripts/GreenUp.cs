@@ -6,6 +6,7 @@ public class GreenUp : MonoBehaviour
 {
     // Start is called before the first frame update
     public Camera mTheCamera = null;
+    public static float nowTime;
     
     public bool mFollowMouse = true;
     public float mHeroSpeed = 20f;
@@ -35,8 +36,13 @@ public class GreenUp : MonoBehaviour
         if(Input.GetKey(KeyCode.Q))
             Application.Quit();
 
-        if(Input.GetKey(KeyCode.J))
+        if(Input.GetKeyDown(KeyCode.J)){
             mSequenceOrder = !mSequenceOrder;
+            if(mSequenceOrder)
+                Text.waypoint_mode = "Sequence";
+            else
+                Text.waypoint_mode = "Random";
+        }
 
         time += Time.smoothDeltaTime;
         if(time > 20f)          // in case overflow
@@ -73,6 +79,7 @@ public class GreenUp : MonoBehaviour
         }
         if(Input.GetKey(KeyCode.Space) && time >= 0.2f){
             GameObject e = Instantiate(Resources.Load("Prefabs/Egg") as GameObject);
+            nowTime = Time.time;
             e.transform.localPosition = transform.localPosition;
             e.transform.up = transform.up;
             Text.EggCount++;
@@ -83,6 +90,10 @@ public class GreenUp : MonoBehaviour
 
     public static bool SequenceOrder(){
         return mSequenceOrder;
+    }
+
+    public static float GetNowTime(){
+        return nowTime;
     }
 
 }
